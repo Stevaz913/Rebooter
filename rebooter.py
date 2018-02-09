@@ -49,3 +49,61 @@ print('Resetting Values to False')
 parser.set('A1', 'reboot', 'False')
 with open('rebooter.cfg', 'wb') as configfile:
 	parser.write(configfile)
+
+testime = 300
+
+while testime > 0:
+	parser.set('A2', 'reboot', 'False')
+	with open('rebooter.cfg', 'wb') as configfile:
+		parser.write(configfile)
+	print('waiting ' + str(testime) + ' seconds')
+	delete_last_lines(1)
+	testime -= 1
+	time.sleep(1)
+
+testime = 10
+print('Sending Reboot')
+
+parser.set('A2', 'reboot', 'True')
+with open('rebooter.cfg', 'wb') as configfile:
+	parser.write(configfile)
+
+while testime > 0:
+	print('Rebooting...' + str(testime) + 'seconds remain')
+	testime -= 1
+	delete_last_lines(1)
+	time.sleep(1)
+
+print('Resetting Values to False')
+parser.set('A2', 'reboot', 'False')
+with open('rebooter.cfg', 'wb') as configfile:
+	parser.write(configfile)
+
+testime = 300
+
+while testime > 0:
+	parser.set('A3', 'reboot', 'False')
+	with open('rebooter.cfg', 'wb') as configfile:
+		parser.write(configfile)
+	print('waiting ' + str(testime) + ' seconds')
+	delete_last_lines(1)
+	testime -= 1
+	time.sleep(1)
+
+testime = 10
+print('Sending Reboot')
+
+parser.set('A3', 'reboot', 'True')
+with open('rebooter.cfg', 'wb') as configfile:
+	parser.write(configfile)
+
+while testime > 0:
+	print('Rebooting...' + str(testime) + 'seconds remain')
+	testime -= 1
+	delete_last_lines(1)
+	time.sleep(1)
+
+print('Resetting Values to False')
+parser.set('A3', 'reboot', 'False')
+with open('rebooter.cfg', 'wb') as configfile:
+	parser.write(configfile)
