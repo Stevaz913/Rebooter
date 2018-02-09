@@ -41,7 +41,7 @@ def rebme(rig):
 		time.sleep(1)
 
 	print('')
-	print(str(rig) + 'Rebooted')
+	print(str(rig) + ' Rebooted')
 	parser.set(rig, 'reboot', 'False')
 	with open(d + 'rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
