@@ -27,7 +27,9 @@ while testime > 0:
 	parser.set('A1', 'reboot', 'False')
 	with open('rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
-	print('waiting' + str(testime) + ' seconds')
+	print('waiting ' + str(testime) + ' seconds')
+	delete_last_lines(1)
+	testime -= 1
 	time.sleep(1)
 
 testime = 10
@@ -39,8 +41,11 @@ with open('rebooter.cfg', 'wb') as configfile:
 
 while testime > 0:
 	print('Rebooting...' + str(testime) + 'seconds remain')
+	testime -= 1
+	delete_last_lines(1)
 	time.sleep(1)
 
+print('Resetting Values to False')
 parser.set('A1', 'reboot', 'False')
 with open('rebooter.cfg', 'wb') as configfile:
 	parser.write(configfile)
