@@ -21,9 +21,8 @@ def delete_last_lines(n=1):
 #print ('B2: ' + parser.get('B2', 'reboot'))
 #print ('')
 
-testime = 30
-
 def rebme(rig):
+	testime = 60
 	while testime > 0:
 		parser.set(rig, 'reboot', 'False')
 		with open('/var/www/html/rebooter.cfg', 'wb') as configfile:
@@ -50,8 +49,6 @@ def rebme(rig):
 	parser.set(rig, 'reboot', 'False')
 	with open('var/www/html/rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
-
-	testime = 60
 
 rebme('A1')
 rebme('A2')
