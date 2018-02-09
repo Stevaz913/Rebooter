@@ -9,39 +9,19 @@ print("")
 print("-----  REBOOTING ALL RIGS  --------")
 
 
-while i > 0:
-	print('Rebooting A1...' + i)
-	i -= 1
-rebooter.rebme(A1)
-time.sleep(60)
-i = 60
+def rbstation(rig):
+	rebooter.rebme(rig)
+	while i > 0:
+		print('Rebooting ' + rig + '...' + i)
+		i -= 1
+		rebooter.delete_last_lines(1)
+	time.sleep(60)
+	i = 60
 
-while i > 0:
-	print('Rebooting A2...' + i)
-	i -= 1
-rebooter.rebme(A2)
-time.sleep(60)
-i = 60
+rbstation('A1')
+rbstation('A2')
+rbstation('A3')
+rbstation('B1')
+rbstation('B2')
 
-while i > 0:
-	print('Rebooting A3...' + i)
-	i -= 1
-rebooter.rebme(A3)
-time.sleep(60)
-i = 60
-
-while i > 0:
-	print('Rebooting B1...' + i)
-	i -= 1
-rebooter.rebme(B1)
-time.sleep(60)
-i = 60
-
-while i > 0:
-	print('Rebooting B2...' + i)
-	i -= 1
-rebooter.rebme(B2)
-time.sleep(60)
-i = 60
-
-print('All Rebooted Probly')
+print('All Rebooted Probly - Mint')
