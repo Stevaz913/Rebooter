@@ -16,7 +16,7 @@ def rbstation(rig):
 		print('Rebooting ' + rig + '...' + i)
 		i -= 1
 		rebooter.delete_last_lines(1)
-	time.sleep(1)
+		time.sleep(1)
 
 rbstation('A1')
 rbstation('A2')
