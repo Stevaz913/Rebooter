@@ -37,7 +37,7 @@ def rebme(rig):
 		print('')
 		print('Rebooting...' + str(testime))
 		testime -= 1
-		delete_last_lines(1)
+		delete_last_lines(2)
 		time.sleep(1)
 
 	print('')
