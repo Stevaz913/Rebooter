@@ -25,13 +25,13 @@ testime = 30
 
 def rebme(rig):
 	while testime > 0:
-	parser.set(rig, 'reboot', 'False')
-	with open('/var/www/html/rebooter.cfg', 'wb') as configfile:
-		parser.write(configfile)
-	print('waiting ' + str(testime) + ' seconds')
-	delete_last_lines(1)
-	testime -= 1
-	time.sleep(1)
+		parser.set(rig, 'reboot', 'False')
+		with open('/var/www/html/rebooter.cfg', 'wb') as configfile:
+			parser.write(configfile)
+		print('waiting ' + str(testime) + ' seconds')
+		delete_last_lines(1)
+		testime -= 1
+		time.sleep(1)
 
 	testime = 10
 	print('Sending Reboot')
