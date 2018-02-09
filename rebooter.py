@@ -7,7 +7,7 @@ ERASE_LINE = '\x1b[2K'
 
 parser = SafeConfigParser()
 parser.read('rebooter.cfg')
-direc = '/var/www/html/'
+direc = 'var/www/html/'
 
 def delete_last_lines(n=1):
 	for _ in range(n):
