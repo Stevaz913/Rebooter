@@ -1,5 +1,8 @@
 import rebooter
 import rball
+import os
+
+os.system('clear')
 
 print("----------------------------------")
 print("|------ REBOOT BOX v0.0.02 ------|")
