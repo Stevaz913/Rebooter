@@ -6,8 +6,8 @@ CURSOR_UP_ONE = '\x1b[1A'
 ERASE_LINE = '\x1b[2K'
 
 parser = SafeConfigParser()
-parser.read('rebooter.cfg')
-direc = 'var/www/html/'
+parser.read('/var/www/html/rebooter.cfg')
+direc = '/var/www/html/'
 
 def delete_last_lines(n=1):
 	for _ in range(n):
