@@ -21,7 +21,7 @@ def delete_last_lines(n=1):
 #print ('B2: ' + parser.get('B2', 'reboot'))
 #print ('')
 
-testtime = 30
+testime = 30
 
 while testime > 0:
 	parser.set('A1', 'reboot', 'False')
