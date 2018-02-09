@@ -24,4 +24,4 @@ rbstation('A3')
 rbstation('B1')
 rbstation('B2')
 
-print('All Rebooted Probly - Mint')
+print('All Rebooted Probly')
