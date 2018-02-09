@@ -16,5 +16,4 @@ def rbooter():
 	rbstation('A3')
 	rbstation('B1')
 	rbstation('B2')
-
-print('All Rebooted Probly')
+	print('All Rebooted Probly')
