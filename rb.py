@@ -6,7 +6,7 @@ import sys
 while True:
 	os.system('clear')
 	print("----------------------------------")
-	print("|------ REBOOT BOX v0.0.02 ------|")
+	print("|------ REBOOT BOX v0.0.10 ------|")
 	print("|--------------------------------|")
 	print("|                                |")
 	print("|   Commands are A1, A2, etc.    |")
