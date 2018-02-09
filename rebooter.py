@@ -25,7 +25,7 @@ def rebme(rig):
 	testime = 60
 	while testime > 0:
 		parser.set(rig, 'reboot', 'False')
-		with open('/var/www/html/rebooter.cfg', 'wb') as configfile:
+		with open('./var/www/html/rebooter.cfg', 'wb') as configfile:
 			parser.write(configfile)
 		print('waiting ' + str(testime) + ' seconds')
 		delete_last_lines(1)
@@ -36,7 +36,7 @@ def rebme(rig):
 	print('Sending Reboot')
 
 	parser.set(rig, 'reboot', 'True')
-	with open('/var/www/html/rebooter.cfg', 'wb') as configfile:
+	with open('./var/www/html/rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
 
 	while testime > 0:
@@ -47,7 +47,7 @@ def rebme(rig):
 
 	print('Resetting Values to False')
 	parser.set(rig, 'reboot', 'False')
-	with open('var/www/html/rebooter.cfg', 'wb') as configfile:
+	with open('./var/www/html/rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
 
 rebme('A1')
