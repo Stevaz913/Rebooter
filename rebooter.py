@@ -25,20 +25,22 @@ def delete_last_lines(n=1):
 #print ('')
 
 def rebme(rig):
-
+	print("")
 	testime = 10
-	print('Sending Reboot')
+	print('Sending Reboot to ' + rig)
 
 	parser.set(rig, 'reboot', 'True')
 	with open(d + 'rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
 
 	while testime > 0:
-		print('Rebooting...' + str(testime) + 'seconds remain')
+		print('')
+		print('Rebooting...' + str(testime))
 		testime -= 1
 		delete_last_lines(1)
 		time.sleep(1)
 
+	print('')
 	print('Reboot Sent.  Probly worked lmao')
 	parser.set(rig, 'reboot', 'False')
 	with open(d + 'rebooter.cfg', 'wb') as configfile:
