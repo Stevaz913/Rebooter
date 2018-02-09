@@ -5,7 +5,7 @@ def rbstation(rig):
 	i = 60
 	rebooter.rebme(rig)
 	while i > 0:
-		print('Wait to reboot next... ' + str(i))
+		print('Waiting... ' + str(i))
 		i -= 1
 		rebooter.delete_last_lines(1)
 		time.sleep(1)
@@ -16,4 +16,5 @@ def rbooter():
 	rbstation('A3')
 	rbstation('B1')
 	rbstation('B2')
-	print('All Rebooted Probly')
+	print('Full Reboot Complete')
+	time.sleep(3)
