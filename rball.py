@@ -5,7 +5,7 @@ def rbstation(rig):
 	i = 60
 	rebooter.rebme(rig)
 	while i > 0:
-		print('Rebooting ' + str(rig) + '...' + str(i))
+		print('Wait to reboot next... ' + str(i))
 		i -= 1
 		rebooter.delete_last_lines(1)
 		time.sleep(1)

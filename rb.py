@@ -3,17 +3,16 @@ import rball
 import os
 import sys
 
-os.system('clear')
-
-print("----------------------------------")
-print("|------ REBOOT BOX v0.0.02 ------|")
-print("|--------------------------------|")
-print("|                                |")
-print("|   Commands are A1, A2, etc.    |")
-print("| 'All' to reboot all, Q to quit |")
-print("----------------------------------")
-print("")
 while True:
+	os.system('clear')
+	print("----------------------------------")
+	print("|------ REBOOT BOX v0.0.02 ------|")
+	print("|--------------------------------|")
+	print("|                                |")
+	print("|   Commands are A1, A2, etc.    |")
+	print("| 'All' to reboot all, Q to quit |")
+	print("----------------------------------")
+	print("")
 	rig = raw_input("====>  Reboot command: ")
 	if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
 		rebooter.rebme(rig)
