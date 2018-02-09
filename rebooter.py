@@ -25,15 +25,6 @@ def delete_last_lines(n=1):
 #print ('')
 
 def rebme(rig):
-	testime = 60
-	while testime > 0:
-		parser.set(rig, 'reboot', 'False')
-		with open(d + 'rebooter.cfg', 'wb') as configfile:
-			parser.write(configfile)
-		print('waiting ' + str(testime) + ' seconds')
-		delete_last_lines(1)
-		testime -= 1
-		time.sleep(1)
 
 	testime = 10
 	print('Sending Reboot')
@@ -48,13 +39,7 @@ def rebme(rig):
 		delete_last_lines(1)
 		time.sleep(1)
 
-	print('Resetting Values to False')
+	print('Reboot Sent.  Probly worked ¯\_(ツ)_/¯ ')
 	parser.set(rig, 'reboot', 'False')
 	with open(d + 'rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
-
-rebme('A1')
-rebme('A2')
-rebme('A3')
-rebme('B1')
-rebme('B2')
