@@ -24,5 +24,5 @@ while True:
 		rball.rbooter()
 	else:
 		print("")
-		print("     "str(rig) + ' is not a valid command')
+		print("     " + str(rig) + ' is not a valid command')
 		time.sleep(3)
