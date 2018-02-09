@@ -39,7 +39,7 @@ def rebme(rig):
 		delete_last_lines(1)
 		time.sleep(1)
 
-	print('Reboot Sent.  Probly worked ¯\_(ツ)_/¯ ')
+	print('Reboot Sent.  Probly worked lmao')
 	parser.set(rig, 'reboot', 'False')
 	with open(d + 'rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
