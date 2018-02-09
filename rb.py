@@ -2,6 +2,7 @@ import rebooter
 import rball
 import os
 import sys
+import time
 
 while True:
 	os.system('clear')
@@ -22,5 +23,5 @@ while True:
 	elif rig == 'All':
 		rball.rbooter()
 	else:
-		print(str(rig) + 'not a valid command')
-		print('')
+		print(str(rig) + 'Not a valid command')
+		time.sleep(3)
