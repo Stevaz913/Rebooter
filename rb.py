@@ -23,5 +23,6 @@ while True:
 	elif rig == 'All':
 		rball.rbooter()
 	else:
-		print(str(rig) + 'Not a valid command')
+		print("")
+		print("     "str(rig) + ' is not a valid command')
 		time.sleep(3)
