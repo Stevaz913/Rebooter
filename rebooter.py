@@ -7,6 +7,7 @@ ERASE_LINE = '\x1b[2K'
 
 parser = SafeConfigParser()
 parser.read('rebooter.cfg')
+direc = '/var/www/html/'
 
 def delete_last_lines(n=1):
 	for _ in range(n):
@@ -25,7 +26,7 @@ def rebme(rig):
 	testime = 60
 	while testime > 0:
 		parser.set(rig, 'reboot', 'False')
-		with open('./var/www/html/rebooter.cfg', 'wb') as configfile:
+		with open(direc + 'rebooter.cfg', 'wb') as configfile:
 			parser.write(configfile)
 		print('waiting ' + str(testime) + ' seconds')
 		delete_last_lines(1)
@@ -36,7 +37,7 @@ def rebme(rig):
 	print('Sending Reboot')
 
 	parser.set(rig, 'reboot', 'True')
-	with open('./var/www/html/rebooter.cfg', 'wb') as configfile:
+	with open(direc + 'rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
 
 	while testime > 0:
@@ -47,7 +48,7 @@ def rebme(rig):
 
 	print('Resetting Values to False')
 	parser.set(rig, 'reboot', 'False')
-	with open('./var/www/html/rebooter.cfg', 'wb') as configfile:
+	with open(direc + 'rebooter.cfg', 'wb') as configfile:
 		parser.write(configfile)
 
 rebme('A1')
