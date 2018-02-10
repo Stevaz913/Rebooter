@@ -6,7 +6,7 @@ import time
 import urllib, json, requests
 import textwrap
 
-def mineStatus:
+def mineStatus():
 	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 	data = json.loads(ret.read())
 	a1stat = data['rigs']['5026ef']['condition']
