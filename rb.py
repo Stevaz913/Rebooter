@@ -6,6 +6,7 @@ import time
 import urllib, urllib2, json, requests
 import textwrap
 import string
+import random
 
 def minerStatus(rig):
 	status = str(data['rigs'][rig]['condition'])
@@ -27,7 +28,7 @@ def print_slow(typeout):
     for letter in typeout:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep(0.1)
+        time.sleep(random.randrage(0.05, 0.1))
 
 while True:
 	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
@@ -91,7 +92,9 @@ while True:
 		time.sleep(0.2)
 
 	else:
-		print_slow("        Ah ah ah!  You didn't say the magic word!")
+		sys.stdout.write("        ")
+		sys.stdout.flush()
+		print_slow("Ah ah ah!  You didn't say the magic word!")
 		print("")
 		time.sleep(1)
 		print("      ('" + str(riggo) + "' is not a valid command)")
