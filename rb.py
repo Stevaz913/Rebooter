@@ -116,5 +116,5 @@ while True:
 
 	else:
 		print("")
-		print("    '" + riggo + "' is not a valid command")
+		print("    " + riggo + "ed your mom last night")
 		time.sleep(3)
