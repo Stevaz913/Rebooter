@@ -87,5 +87,5 @@ while True:
 	else:
 		print("")
 		print("     Ah ah ah! You didn't say the magic word!")
-		print("      ('" + str(rig) + "' is not a valid command)")
+		print("      ('" + str(riggo) + "' is not a valid command)")
 		time.sleep(3)
