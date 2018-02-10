@@ -28,7 +28,7 @@ def print_slow(typeout):
     for letter in typeout:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep((0.08) * random.random())
+        time.sleep(0.045)
 
 def hashrateMod(hashrate):
 	hr = hashrate
@@ -109,7 +109,7 @@ while True:
 		sys.stdout.write("        ")
 		sys.stdout.flush()
 		print_slow("Ah ah ah!")
-		time.sleep(0.5)
+		time.sleep(1.1)
 		sys.stdout.write("  ")
 		print_slow("You didn't say the magic word!")
 		time.sleep(3)
