@@ -44,18 +44,19 @@ while True:
 	print("")
 	
 	rig = raw_input("====>  Panel Command: ")
+	rig.upper()
 	
 	if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
 		rebooter.rebme(rig)
 	
-	elif rig == 'Q' or rig == 'q':
+	elif rig == 'Q':
 		print('Exiting...')
 		sys.exit(0)
 	
-	elif rig == 'All':
+	elif rig == 'ALL':
 		rball.rbooter()
 	
-	elif rig == 'dadjoke':
+	elif rig == 'DADJOKE':
 		response = requests.get("https://icanhazdadjoke.com/",
   		  headers={
     	    "Accept": "application/json"
@@ -65,7 +66,7 @@ while True:
 		print('')
 		raw_input("Press enter to return...")
 
-	elif rig == 'stats':
+	elif rig == 'STATS':
 		ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 		data = json.loads(ret.read())
 		minerStatus('5026ef')
