@@ -35,7 +35,8 @@ while True:
   		  }
 		)
 		print response.json()['joke']
-		time.sleep(5)
+		print('')
+		raw_input("Press enter to return...")
 
 	else:
 		print("")
