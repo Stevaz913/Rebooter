@@ -15,22 +15,28 @@ a3stat = data['rigs']['482892']['condition']
 b1stat = data['rigs']['502b8a']['condition']
 b2stat = data['rigs']['590b29']['condition']
 
+a1gpu = data['rigs']['5026ef']['gpus']
+a2gpu = data['rigs']['50270d']['gpus']
+a3gpu = data['rigs']['482892']['gpus']
+b1gpu = data['rigs']['502b8a']['gpus']
+b2gpu = data['rigs']['590b29']['gpus']
+
 while True:
 	os.system('clear')
-	print("-------------------------------------")
-	print("|-------- REBOOT BOX v0.0.10 -------|")
-	print("|-----------------------------------|")
-	print("|                                   |")
-	print("|    A1 Status: " + str(a1stat) + "              |")
-	print("|    A2 Status: " + str(a2stat) + "              |")
-	print("|    A3 Status: " + str(a3stat) + "              |")
-	print("|    B1 Status: " + str(b1stat) + "              |")
-	print("|    B2 Status: " + str(b2stat) + "              |")
-	print("|                                   |")
-	print("|      Commands are A1, A2, etc.    |")
-	print("|   'stats' to update miner status  |")
-	print("|   'All' to reboot all, Q to quit  |")
-	print("-------------------------------------")
+	print("---------------------------------------------")
+	print("|------------ REBOOT BOX v0.0.11 -----------|")
+	print("|-------------------------------------------|")
+	print("|                                           |")
+	print("|    A1 Status: " + str(a1stat) + " | " + str(a1gpu) + "/7 GPUs Running   |")
+	print("|    A2 Status: " + str(a2stat) + " | " + str(a2gpu) + "/7 GPUs Running   |")
+	print("|    A3 Status: " + str(a3stat) + " | " + str(a3gpu) + "/9 GPUs Running   |")
+	print("|    B1 Status: " + str(b1stat) + " | " + str(b1gpu) + "/9 GPUs Running   |")
+	print("|    B2 Status: " + str(b2stat) + " | " + str(b2gpu) + "/8 GPUs Running   |")
+	print("|                                           |")
+	print("|          Commands are A1, A2, etc.        |")
+	print("|       'stats' to update miner status      |")
+	print("|       'All' to reboot all, Q to quit      |")
+	print("---------------------------------------------")
 	print("")
 	
 	rig = raw_input("====>  Reboot command: ")
@@ -63,6 +69,11 @@ while True:
 		a3stat = data['rigs']['482892']['condition']
 		b1stat = data['rigs']['502b8a']['condition']
 		b2stat = data['rigs']['590b29']['condition']
+		a1gpu = data['rigs']['5026ef']['gpus']
+		a2gpu = data['rigs']['50270d']['gpus']
+		a3gpu = data['rigs']['482892']['gpus']
+		b1gpu = data['rigs']['502b8a']['gpus']
+		b2gpu = data['rigs']['590b29']['gpus']
 		print('Updating miner stats....')
 		time.sleep(1)
 		print('Done')
