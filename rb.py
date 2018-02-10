@@ -49,7 +49,7 @@ while True:
 	hashrate = int((data['per_info']['claymore']['hash']))
 	os.system('clear')
 	print("---------------------------------------------")
-	print("|------------ RIG PANEL v0.1.07  -----------|")
+	print("|-----------  RIG PANEL v0.1.1  ------------|")
 	print("|---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
 	print("|                                           |")
 	print("|  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
