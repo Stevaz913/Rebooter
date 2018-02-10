@@ -91,15 +91,16 @@ while True:
 		print('Done')
 		time.sleep(0.2)
 
-	else:
+	elif rig == ACCESS MAIN PROGRAMMING:
 		sys.stdout.write("        ")
 		sys.stdout.flush()
 		print_slow("Ah ah ah!")
 		time.sleep(0.5)
 		sys.stdout.write("  ")
 		print_slow("You didn't say the magic word!")
-		time.sleep(1)
-		print("")
-		print("")
-		print("        ('" + str(riggo) + "' is not a valid command)")
 		time.sleep(3)
+
+	else:
+		print("")
+		print("    '" + riggo + "' is not a valid command")
+		sleep(3)
