@@ -28,7 +28,7 @@ def print_slow(typeout):
     for letter in typeout:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep(random.randrange(0.05, 0.1))
+        time.sleep((0.1) * random.random())
 
 while True:
 	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
@@ -94,7 +94,10 @@ while True:
 	else:
 		sys.stdout.write("        ")
 		sys.stdout.flush()
-		print_slow("Ah ah ah!  You didn't say the magic word!")
+		print_slow("Ah ah ah!")
+		time.sleep(0.5)
+		sys.stdout.write("  ")
+		print_slow("You didn't say the magic word!")
 		print("")
 		time.sleep(1)
 		print("      ('" + str(riggo) + "' is not a valid command)")
