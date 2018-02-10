@@ -6,11 +6,14 @@ import time
 import urllib, urllib2, json, requests
 import textwrap
 
-a1stat = 'null'
-a2stat = 'null'
-a3stat = 'null'
-b1stat = 'null'
-b2stat = 'null'
+ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
+data = json.loads(ret.read())
+
+a1stat = data['rigs']['5026ef']['condition']
+a2stat = data['rigs']['50270d']['condition']
+a3stat = data['rigs']['482892']['condition']
+b1stat = data['rigs']['502b8a']['condition']
+b2stat = data['rigs']['590b29']['condition']
 
 def mineStatus():
 	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
