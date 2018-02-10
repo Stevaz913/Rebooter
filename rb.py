@@ -4,6 +4,7 @@ import os
 import sys
 import time
 import urllib, json, requests
+import textwrap
 
 while True:
 	os.system('clear')
@@ -34,7 +35,7 @@ while True:
     	    "Accept": "application/json"
   		  }
 		)
-		print response.json()['joke']
+		print textwrap.wrap(response.json()['joke'], 25)
 		print('')
 		raw_input("Press enter to return...")
 
