@@ -68,16 +68,16 @@ while True:
 	elif rig == 'stats':
 		ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 		data = json.loads(ret.read())
-		a1stat = data['rigs']['5026ef']['condition']
-		a2stat = data['rigs']['50270d']['condition']
-		a3stat = data['rigs']['482892']['condition']
-		b1stat = data['rigs']['502b8a']['condition']
-		b2stat = data['rigs']['590b29']['condition']
-		a1gpu = data['rigs']['5026ef']['miner_instance']
-		a2gpu = data['rigs']['50270d']['miner_instance']
-		a3gpu = data['rigs']['482892']['miner_instance']
-		b1gpu = data['rigs']['502b8a']['miner_instance']
-		b2gpu = data['rigs']['590b29']['miner_instance']
+		minerStatus('5026ef')
+		minerStatus('50270d')
+		minerStatus('482892')
+		minerStatus('502b8a')
+		minerStatus('590b29')
+		minerGPUs('5026ef')
+		minerGPUs('50270d')
+		minerGPUs('482892')
+		minerGPUs('502b8a')
+		minerGPUs('590b29')
 		print('Updating miner stats....')
 		time.sleep(1)
 		print('Done')
@@ -85,5 +85,6 @@ while True:
 
 	else:
 		print("")
-		print("     " + str(rig) + ' is not a valid command')
+		print("     Ah ah ah! You didn't say the magic word!")
+		print("      ('" + str(rig) + "' is not a valid command)")
 		time.sleep(3)
