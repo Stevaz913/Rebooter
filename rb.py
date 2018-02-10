@@ -85,7 +85,10 @@ while True:
 		time.sleep(0.2)
 
 	else:
+		letter = ("     Ah ah ah! You didn't say the magic word!")
+		for letter in str:
+			sys.stdout.write(letter)
+	   		time.sleep(.1)
 		print("")
-		print("     Ah ah ah! You didn't say the magic word!")
 		print("      ('" + str(riggo) + "' is not a valid command)")
 		time.sleep(3)
