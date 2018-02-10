@@ -103,4 +103,4 @@ while True:
 	else:
 		print("")
 		print("    '" + riggo + "' is not a valid command")
-		sleep(3)
+		time.sleep(3)
