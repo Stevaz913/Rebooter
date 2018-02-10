@@ -28,15 +28,29 @@ def print_slow(typeout):
     for letter in typeout:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep((0.1) * random.random())
+        time.sleep((0.08) * random.random())
+
+def hashrateMod(hashrate):
+	hr = hashrate
+	#hr = int((data['per_info']['claymore']['hash']))
+	if hr > 1000:
+		x = str(hr) + "  "
+	elif hr > 100:
+		x = str(hr) + "  -"
+	elif hr > 10:
+		x = str(hr) + "  --"
+	elif hr >= 0:
+		x = str(hr) + "  ---"
+	return x 
 
 while True:
 	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 	data = json.loads(ret.read())
+	hashrate = int((data['per_info']['claymore']['hash']))
 	os.system('clear')
 	print("---------------------------------------------")
-	print("|------------ RIG PANEL v0.1.03  -----------|")
-	print("|-------------------------------------------|")
+	print("|------------ RIG PANEL v0.1.07  -----------|")
+	print("|---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
 	print("|                                           |")
 	print("|  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
 	print("|  A2 Status: " + minerStatus('50270d') + "|  " + minerGPUs('50270d') + "/7 GPUs Running   |")
