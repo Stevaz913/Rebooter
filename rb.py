@@ -6,6 +6,12 @@ import time
 import urllib, urllib2, json, requests
 import textwrap
 
+a1stat = 'null'
+a2stat = 'null'
+a3stat = 'null'
+b1stat = 'null'
+b2stat = 'null'
+
 def mineStatus():
 	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 	data = json.loads(ret.read())
