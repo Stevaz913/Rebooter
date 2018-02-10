@@ -43,8 +43,8 @@ while True:
 	print("---------------------------------------------")
 	print("")
 	
-	rig = raw_input("====>  Panel Command: ")
-	rig.upper()
+	riggo = raw_input("====>  Panel Command: ")
+	rig = riggo.upper()
 	
 	if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
 		rebooter.rebme(rig)
