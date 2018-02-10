@@ -16,6 +16,7 @@ def mineStatus():
 	b2stat = data['rigs']['590b29']['condition']
 
 while True:
+	mineStatus()
 	os.system('clear')
 	print("----------------------------------")
 	print("|------ REBOOT BOX v0.0.10 ------|")
