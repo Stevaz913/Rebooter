@@ -8,7 +8,7 @@ import textwrap
 import string
 
 def minerStatus(rig):
-	status = data['rigs'][rig]['condition']
+	status = str(data['rigs'][rig]['condition'])
 	if status == 'mining':
 		x = status.replace('mining', 'OK      ')
 	elif status == 'stuck_miners':
@@ -20,7 +20,7 @@ def minerStatus(rig):
 	return x
 
 def minerGPUs(rig):
-	status = data['rigs'][rig]['miner_instance']
+	status = str(data['rigs'][rig]['miner_instance'])
 	return status
 
 while True:
