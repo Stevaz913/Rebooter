@@ -35,7 +35,7 @@ while True:
     	    "Accept": "application/json"
   		  }
 		)
-		print textwrap.wrap(response.json()['joke'], 25)
+		print textwrap.fill(response.json()['joke'], 40)
 		print('')
 		raw_input("Press enter to return...")
 
