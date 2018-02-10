@@ -91,7 +91,7 @@ while True:
 		print('Done')
 		time.sleep(0.2)
 
-	elif rig == ACCESS MAIN PROGRAMMING:
+	elif rig == 'ACCESS MAIN PROGRAMMING':
 		sys.stdout.write("        ")
 		sys.stdout.flush()
 		print_slow("Ah ah ah!")
