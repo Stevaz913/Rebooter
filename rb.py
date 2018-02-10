@@ -3,7 +3,7 @@ import rball
 import os
 import sys
 import time
-import urllib, json, requests
+import urllib, urllib2, json, requests
 import textwrap
 
 def mineStatus():
