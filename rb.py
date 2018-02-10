@@ -23,8 +23,8 @@ def minerGPUs(rig):
 	status = str(data['rigs'][rig]['miner_instance'])
 	return status
 
-def print_slow(str):
-    for letter in str:
+def print_slow(typeout):
+    for letter in typeout:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.1)
