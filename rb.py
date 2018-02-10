@@ -22,7 +22,7 @@ def mineStatus():
 	a2stat = data['rigs']['50270d']['condition']
 	a3stat = data['rigs']['482892']['condition']
 	b1stat = data['rigs']['502b8a']['condition']
-	b2stat = data['rigs']['590b29']['condition']
+	b2stat = 'lmao'
 
 while True:
 	mineStatus()
@@ -30,11 +30,11 @@ while True:
 	print("----------------------------------")
 	print("|------ REBOOT BOX v0.0.10 ------|")
 	print("|--------------------------------|")
-	print("| A1 Status: " + str(a1stat) + "         |")
-	print("| A2 Status: " + str(a2stat) + "         |")
-	print("| A3 Status: " + str(a3stat) + "         |")
-	print("| B1 Status: " + str(b1stat) + "         |")
-	print("| B2 Status: " + str(b2stat) + "         |")
+	print("| A1 Status: " + str(a1stat) + "              |")
+	print("| A2 Status: " + str(a2stat) + "              |")
+	print("| A3 Status: " + str(a3stat) + "              |")
+	print("| B1 Status: " + str(b1stat) + "              |")
+	print("| B2 Status: " + str(b2stat) + "              |")
 	print("|                                |")
 	print("|   Commands are A1, A2, etc.    |")
 	print("| 'All' to reboot all, Q to quit |")
