@@ -16,5 +16,6 @@ def rbooter():
 	rbstation('A3')
 	rbstation('B1')
 	rbstation('B2')
-	print('Full Reboot Complete')
-	time.sleep(3)
+	print('Full Reboot Complete!')
+	print('')
+	raw_input('Press Enter to Return...')
