@@ -35,6 +35,7 @@ while True:
   		  }
 		)
 		print response.json()['joke']
+		time.sleep(5)
 
 	else:
 		print("")
