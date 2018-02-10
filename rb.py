@@ -23,6 +23,12 @@ def minerGPUs(rig):
 	status = str(data['rigs'][rig]['miner_instance'])
 	return status
 
+def print_slow(str):
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.1)
+
 while True:
 	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 	data = json.loads(ret.read())
@@ -85,10 +91,8 @@ while True:
 		time.sleep(0.2)
 
 	else:
-		letter = ("     Ah ah ah! You didn't say the magic word!")
-		for letter in str:
-			sys.stdout.write(letter)
-	   		time.sleep(.1)
+		print_slow("        Ah ah ah!  You didn't say the magic word!")
 		print("")
+		time.sleep(1)
 		print("      ('" + str(riggo) + "' is not a valid command)")
 		time.sleep(3)
