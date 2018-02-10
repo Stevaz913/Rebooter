@@ -28,7 +28,7 @@ def print_slow(typeout):
     for letter in typeout:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep(random.randrage(0.05, 0.1))
+        time.sleep(random.randrange(0.05, 0.1))
 
 while True:
 	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
