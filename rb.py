@@ -131,6 +131,7 @@ while True:
 		sys.stdout.write('     Updating')
 		sys.stdout.flush()
 		print_slower('.....')
+		time.sleep(2)
 
 	else:
 		print("")
