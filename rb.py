@@ -18,6 +18,8 @@ def minerStatus(rig):
 		x = status.replace('just_booted', 'BOOTUP  ')
 	elif status == 'unreachable':
 		x = status.replace('unreachable', 'D/C     ')
+	elif status == 'overheat':
+		x = status.replace('overheat', 'HEAT    ')
 	else:
 		x = status
 	return x
