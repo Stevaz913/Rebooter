@@ -111,7 +111,7 @@ while True:
 		data = json.loads(ret.read())
 		hashrate = int((data['per_info']['claymore']['hash']))
 		print("    ---------------------------------------------")
-		print("    |-----------  RIG PANEL v0.1.5  ------------|")
+		print("    |-----------  RIG PANEL v0.1.6  ------------|")
 		print("    |---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
 		print("    |            Logged in as " + user + "             |")
 		print("    |                                           |")
