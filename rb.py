@@ -16,6 +16,8 @@ def minerStatus(rig):
 		x = status.replace('stuck_miners', 'STUCK   ')
 	elif status =='just_booted':
 		x = status.replace('just_booted', 'BOOTUP  ')
+	elif status == 'unreachable':
+		x = status.replace('unreachable', 'D/C     ')
 	else:
 		x = status
 	return x
