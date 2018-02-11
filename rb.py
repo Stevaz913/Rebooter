@@ -84,10 +84,6 @@ while True:
 		print("    |  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
 		print("    |  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
 		print("    |-------------------------------------------|")
-#		print("|      Reboot commands are A1, A2, etc.     |")
-#		print("|      'stats' to update miner status       |")
-#		print("|      'All' to reboot all, Q to quit       |")
-#		print("---------------------------------------------")
 		while i > 0:
 			print("    |   Input: ctrl + c   |   Refresh: " + str(datetime.timedelta(seconds=i)) + "  | \r")
 			print("    ---------------------------------------------")
@@ -125,24 +121,6 @@ while True:
 			print textwrap.fill(response.json()['joke'], 40)
 			print('')
 			raw_input("Press enter to return...")
-
-		elif rig == 'STATS':
-			ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
-			data = json.loads(ret.read())
-			minerStatus('5026ef')
-			minerStatus('50270d')
-			minerStatus('482892')
-			minerStatus('502b8a')
-			minerStatus('590b29')
-			minerGPUs('5026ef')
-			minerGPUs('50270d')
-			minerGPUs('482892')
-			minerGPUs('502b8a')
-			minerGPUs('590b29')
-			print('Updating miner stats....')
-			time.sleep(1)
-			print('Done')
-			time.sleep(0.2)
 
 		elif rig == 'ACCESS MAIN PROGRAMMING':
 			sys.stdout.write("        ")
