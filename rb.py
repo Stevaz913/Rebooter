@@ -84,7 +84,7 @@ riggo = ''
 while True:
 	os.system('clear')
 	print("    ---------------------------------------------")
-	print("   |-----------  RIG PANEL v0.1.7  --------------|")
+	print("   |-----------  RIG PANEL v0.1.8  --------------|")
 	print("    ---------------------------------------------")
 	print("")
 	print("    Enter User Number:")
@@ -110,7 +110,7 @@ while True:
 		data = json.loads(ret.read())
 		hashrate = int((data['per_info']['claymore']['hash']))
 		print("    ---------------------------------------------")
-		print("   |------------  RIG PANEL v0.1.7  -------------|")
+		print("   |------------  RIG PANEL v0.1.8  -------------|")
 		print("    ----------------  HR: " + str(hashrateMod(hashrate)) + "-----------------")
 		print("    |            Logged in as " + user + "             |")
 		print("    |                                           |")
@@ -130,10 +130,11 @@ while True:
 
 	except KeyboardInterrupt:
 		i = 60
-		print("  | Reboot single Rig: a1, a2, etc.           |")
-		print("    | Reboot all rigs  : all                    |")
+		print("  | [a1]... : Reboot Single Rig               |")
+		print("    | [all]   : Reboot all rigs                 |")
+		print("    | [s]     : Send slack message              |")
+		print("    | [q]     : Quit back to terminal           |")
 		print("    | ENTER (no command) for manual update      |")
-		print("    | Q to quit back to terminal                |")
 		print("    ---------------------------------------------")
 		riggo = raw_input("====>  Panel Command: ")
 		rig = riggo.upper()
@@ -143,7 +144,7 @@ while True:
 			if s == 'y':
 				q = raw_input('Enter message (Leave blank for a generic): ')
 				if q != '':
-					slackmessage(q)
+					slackmessage("Rebooting " + rig + " - " + q)
 				else:
 					slackmessage("Rebooting " + rig)
 			rebooter.rebme(rig)
@@ -180,6 +181,10 @@ while True:
 			sys.stdout.write("  ")
 			print_slow("You didn't say the magic word!")
 			time.sleep(3)
+
+		elif rig == 's':
+			s = raw_input('====> Message: ')
+			slackmessage(s)
 
 		elif riggo == '':
 			print('')
