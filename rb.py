@@ -7,6 +7,11 @@ import urllib, urllib2, json, requests
 import textwrap
 import string
 import random
+import datetime
+
+rig = ''
+riggo= ''
+rigga = ''
 
 def minerStatus(rig):
 	status = str(data['rigs'][rig]['condition'])
@@ -60,8 +65,9 @@ while True:
 	data = json.loads(ret.read())
 	hashrate = int((data['per_info']['claymore']['hash']))
 	os.system('clear')
+	i = 60
 	print("---------------------------------------------")
-	print("|-----------  RIG PANEL v0.1.1  ------------|")
+	print("|-----------  RIG PANEL v0.1.3  ------------|")
 	print("|---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
 	print("|                                           |")
 	print("|  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
@@ -74,10 +80,16 @@ while True:
 	print("|      'stats' to update miner status       |")
 	print("|      'All' to reboot all, Q to quit       |")
 	print("---------------------------------------------")
+	print("| Refresh in: " + str(datetime.timedelta(seconds=i)) + "                       |")
+	print("---------------------------------------------")
 	print("")
 	
-	riggo = raw_input("====>  Panel Command: ")
-	rig = riggo.upper()
+	while i > 0:
+		rigga = raw_input('====>  Press Enter to Input Command  <=====')
+
+	if rigga == '':
+		riggo = raw_input("====>  Panel Command: ")
+		rig = riggo.upper()
 	
 	if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
 		rebooter.rebme(rig)
@@ -126,7 +138,7 @@ while True:
 		print_slow("You didn't say the magic word!")
 		time.sleep(3)
 
-	elif rig == '':
+	elif rigga == '' or riggo == '':
 		print('')
 		sys.stdout.write('     Updating')
 		sys.stdout.flush()
