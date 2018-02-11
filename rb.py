@@ -85,7 +85,7 @@ rigga = ''
 while True:
 	os.system('clear')
 	print("    ---------------------------------------------")
-	print("    |-----------  RIG PANEL v0.1.5  ------------|")
+	print("    |-----------  RIG PANEL v0.1.6  ------------|")
 	print("    |-------------------------------------------|")
 	print("")
 	print("    Enter User Number:")
