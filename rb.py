@@ -91,8 +91,7 @@ while True:
 		while i > 0:
 			print("    |   Input: ctrl + c   |   Refresh: " + str(datetime.timedelta(seconds=i)) + "  | \r")
 			print("    ---------------------------------------------")
-			print("")
-			delete_last_lines(3)
+			delete_last_lines(2)
 			time.sleep(1)
 			i -= 1
 		i = 60
