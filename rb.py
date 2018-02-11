@@ -80,14 +80,14 @@ while True:
 	print("|      'stats' to update miner status       |")
 	print("|      'All' to reboot all, Q to quit       |")
 	print("---------------------------------------------")
-	print("| Refresh in: " + str(datetime.timedelta(seconds=i)) + "                       |")
-	print("---------------------------------------------")
-	print("")
+#	print("| Refresh in: " + str(datetime.timedelta(seconds=i)) + "                       |")
+#	print("---------------------------------------------")
+#	print("")
 	
-	while i > 0:
+#	while i > 0:
 #		rigga = raw_input('====>  Press Enter to Input Command  <=====')
-		time.sleep(1)
-		i -= 1
+#		time.sleep(1)
+#		i -= 1
 
 #	if rigga == '':
 	riggo = raw_input("====>  Panel Command: ")
