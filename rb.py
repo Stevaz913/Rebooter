@@ -19,7 +19,7 @@ sc = SlackClient(slack_token)
 def slackmessage(m):
     sc.api_call(
       "chat.postMessage",
-      channel="#rigstatus",
+      channel="#testchannel",
       text=m,
       as_user="False",
       username=user,
@@ -80,13 +80,12 @@ def hashrateMod(hashrate):
 i = 60
 rig = ''
 riggo = ''
-rigga = ''
 
 while True:
 	os.system('clear')
 	print("    ---------------------------------------------")
-	print("    |-----------  RIG PANEL v0.1.6  ------------|")
-	print("    |-------------------------------------------|")
+	print("   |-----------  RIG PANEL v0.1.7  --------------|")
+	print("    ---------------------------------------------")
 	print("")
 	print("    Enter User Number:")
 	print("    [1] Freak")
@@ -111,8 +110,8 @@ while True:
 		data = json.loads(ret.read())
 		hashrate = int((data['per_info']['claymore']['hash']))
 		print("    ---------------------------------------------")
-		print("    |-----------  RIG PANEL v0.1.6  ------------|")
-		print("    |---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
+		print("   |------------  RIG PANEL v0.1.7  -------------|")
+		print("    ----------------  HR: " + str(hashrateMod(hashrate)) + "-----------------")
 		print("    |            Logged in as " + user + "             |")
 		print("    |                                           |")
 		print("    |  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
@@ -120,7 +119,7 @@ while True:
 		print("    |  A3 Status: " + minerStatus('482892') + "|  " + minerGPUs('482892') + "/9 GPUs Running   |")
 		print("    |  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
 		print("    |  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
-		print("    |-------------------------------------------|")
+		print("    ---------------------------------------------")
 		while i > 0:
 			print("    |   Input: ctrl + c   |   Refresh: " + str(datetime.timedelta(seconds=i)) + "  | \r")
 			print("    ---------------------------------------------")
@@ -142,7 +141,11 @@ while True:
 		if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
 			s = raw_input('Send message to slack channel? (y/n) ')
 			if s == 'y':
-				slackmessage("Rebooting " + rig)
+				q = raw_input('Enter message (Leave blank for a generic): ')
+				if q != '':
+					slackmessage(q)
+				else:
+					slackmessage("Rebooting " + rig)
 			rebooter.rebme(rig)
 	
 		elif rig == 'Q':
@@ -152,7 +155,11 @@ while True:
 		elif rig == 'ALL':
 			s = raw_input('Send message to slack channel? (y/n) ')
 			if s == 'y':
-				slackmessage("Rebooting ALL")
+				q = raw_input('Enter message (Leave blank for a generic): ')
+				if q != '':
+					slackmessage(q)
+				else:
+					slackmessage("Rebooting ALL")
 			rball.rbooter()
 	
 		elif rig == 'DADJOKE':
@@ -174,7 +181,7 @@ while True:
 			print_slow("You didn't say the magic word!")
 			time.sleep(3)
 
-		elif rigga == '' or riggo == '':
+		elif riggo == '':
 			print('')
 			sys.stdout.write('     Updating')
 			sys.stdout.flush()
