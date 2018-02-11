@@ -122,9 +122,10 @@ while True:
 
 	elif rig == '':
 		print('')
-		print('     Updating')
+		sys.stdout.write('     Updating')
+		sys.stdout.flush()
 		print_slow('.....')
-		
+
 	else:
 		print("")
 		print("    " + riggo + "ed your mom last night")
