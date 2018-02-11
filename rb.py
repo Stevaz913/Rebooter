@@ -59,95 +59,99 @@ def hashrateMod(hashrate):
 	elif hr >= 0:
 		x = str(hr) + "  ---"
 	return x 
-
+i = 60
 while True:
-	ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
-	data = json.loads(ret.read())
-	hashrate = int((data['per_info']['claymore']['hash']))
-	os.system('clear')
-	i = 60
-	print("---------------------------------------------")
-	print("|-----------  RIG PANEL v0.1.3  ------------|")
-	print("|---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
-	print("|                                           |")
-	print("|  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
-	print("|  A2 Status: " + minerStatus('50270d') + "|  " + minerGPUs('50270d') + "/7 GPUs Running   |")
-	print("|  A3 Status: " + minerStatus('482892') + "|  " + minerGPUs('482892') + "/9 GPUs Running   |")
-	print("|  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
-	print("|  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
-	print("|                                           |")
-	print("|      Reboot commands are A1, A2, etc.     |")
-	print("|      'stats' to update miner status       |")
-	print("|      'All' to reboot all, Q to quit       |")
-	print("---------------------------------------------")
-#	print("| Refresh in: " + str(datetime.timedelta(seconds=i)) + "                       |")
-#	print("---------------------------------------------")
-#	print("")
-	
-#	while i > 0:
-#		rigga = raw_input('====>  Press Enter to Input Command  <=====')
-#		time.sleep(1)
-#		i -= 1
-
-#	if rigga == '':
-	riggo = raw_input("====>  Panel Command: ")
-	rig = riggo.upper()
-	
-	if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
-		rebooter.rebme(rig)
-	
-	elif rig == 'Q':
-		print('Exiting...')
-		sys.exit(0)
-	
-	elif rig == 'ALL':
-		rball.rbooter()
-	
-	elif rig == 'DADJOKE':
-		response = requests.get("https://icanhazdadjoke.com/",
-  		  headers={
-    	    "Accept": "application/json"
-  		  }
-		)
-		print textwrap.fill(response.json()['joke'], 40)
-		print('')
-		raw_input("Press enter to return...")
-
-	elif rig == 'STATS':
+	try:
 		ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 		data = json.loads(ret.read())
-		minerStatus('5026ef')
-		minerStatus('50270d')
-		minerStatus('482892')
-		minerStatus('502b8a')
-		minerStatus('590b29')
-		minerGPUs('5026ef')
-		minerGPUs('50270d')
-		minerGPUs('482892')
-		minerGPUs('502b8a')
-		minerGPUs('590b29')
-		print('Updating miner stats....')
-		time.sleep(1)
-		print('Done')
-		time.sleep(0.2)
+		hashrate = int((data['per_info']['claymore']['hash']))
+		while i > 0:
+			os.system('clear')
+			print("---------------------------------------------")
+			print("|-----------  RIG PANEL v0.1.4  ------------|")
+			print("|---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
+			print("|                                           |")
+			print("|  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
+			print("|  A2 Status: " + minerStatus('50270d') + "|  " + minerGPUs('50270d') + "/7 GPUs Running   |")
+			print("|  A3 Status: " + minerStatus('482892') + "|  " + minerGPUs('482892') + "/9 GPUs Running   |")
+			print("|  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
+			print("|  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
+			print("|                                           |")
+			print("|      Reboot commands are A1, A2, etc.     |")
+			print("|      'stats' to update miner status       |")
+			print("|      'All' to reboot all, Q to quit       |")
+			print("---------------------------------------------")
+			print("|   Input: ctrl + C   |   Refresh: " + str(datetime.timedelta(seconds=i)) + "  |")
+			print("---------------------------------------------")
+			print("")
+			time.sleep(1)
+			i -= 1
 
-	elif rig == 'ACCESS MAIN PROGRAMMING':
-		sys.stdout.write("        ")
-		sys.stdout.flush()
-		print_slow("Ah ah ah!")
-		time.sleep(1.1)
-		sys.stdout.write("  ")
-		print_slow("You didn't say the magic word!")
-		time.sleep(3)
+	except KeyboardInterrupt:
+		i = 60
+		riggo = raw_input("====>  Panel Command: ")
+		rig = riggo.upper()
+	
+		if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
+			rebooter.rebme(rig)
+	
+		elif rig == 'Q':
+			print('Exiting...')
+			sys.exit(0)
+	
+		elif rig == 'ALL':
+			rball.rbooter()
+	
+		elif rig == 'DADJOKE':
+			response = requests.get("https://icanhazdadjoke.com/",
+  		  		headers={
+    	    		"Accept": "application/json"
+  		  		}
+			)
+			print textwrap.fill(response.json()['joke'], 40)
+			print('')
+			raw_input("Press enter to return...")
 
-	elif rigga == '' or riggo == '':
-		print('')
-		sys.stdout.write('     Updating')
-		sys.stdout.flush()
-		print_slower('.....')
-		time.sleep(2)
+		elif rig == 'STATS':
+			ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
+			data = json.loads(ret.read())
+			minerStatus('5026ef')
+			minerStatus('50270d')
+			minerStatus('482892')
+			minerStatus('502b8a')
+			minerStatus('590b29')
+			minerGPUs('5026ef')
+			minerGPUs('50270d')
+			minerGPUs('482892')
+			minerGPUs('502b8a')
+			minerGPUs('590b29')
+			print('Updating miner stats....')
+			time.sleep(1)
+			print('Done')
+			time.sleep(0.2)
 
-	else:
-		print("")
-		print("    " + riggo + "ed your mom last night")
-		time.sleep(3)
+		elif rig == 'ACCESS MAIN PROGRAMMING':
+			sys.stdout.write("        ")
+			sys.stdout.flush()
+			print_slow("Ah ah ah!")
+			time.sleep(1.1)
+			sys.stdout.write("  ")
+			print_slow("You didn't say the magic word!")
+			time.sleep(3)
+
+		elif rigga == '' or riggo == '':
+			print('')
+			sys.stdout.write('     Updating')
+			sys.stdout.flush()
+			print_slower('.....')
+			time.sleep(2)
+
+		else:
+			print("")
+			print("    " + riggo + "ed your mom last night")
+			time.sleep(3)
+
+	i = 60
+	sys.stdout.write('Refresh')
+	sys.stdout.flush()
+	print_slower('.....')
