@@ -152,6 +152,3 @@ while True:
 			time.sleep(3)
 
 	i = 60
-	sys.stdout.write('Refresh')
-	sys.stdout.flush()
-	print_slower('.....')
