@@ -156,8 +156,6 @@ while True:
 			rball.rbooter()
 	
 		elif rig == 'DADJOKE':
-			if s == 'y':
-				slackmessage("SUCCESS")
 			response = requests.get("https://icanhazdadjoke.com/",
   		  		headers={
     	    		"Accept": "application/json"
