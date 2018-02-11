@@ -10,8 +10,16 @@ import random
 import datetime
 
 rig = ''
-riggo= ''
+riggo = ''
 rigga = ''
+
+CURSOR_UP_ONE = '\x1b[1A'
+ERASE_LINE = '\x1b[2K'
+
+def delete_last_lines(n=1):
+    for _ in range(n):
+        sys.stdout.write(CURSOR_UP_ONE)
+        sys.stdout.write(ERASE_LINE)
 
 def minerStatus(rig):
 	status = str(data['rigs'][rig]['condition'])
@@ -62,33 +70,40 @@ def hashrateMod(hashrate):
 i = 60
 while True:
 	try:
+		os.system('clear')
 		ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 		data = json.loads(ret.read())
 		hashrate = int((data['per_info']['claymore']['hash']))
+		print("    ---------------------------------------------")
+		print("    |-----------  RIG PANEL v0.1.5  ------------|")
+		print("    |---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
+		print("    |                                           |")
+		print("    |  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
+		print("    |  A2 Status: " + minerStatus('50270d') + "|  " + minerGPUs('50270d') + "/7 GPUs Running   |")
+		print("    |  A3 Status: " + minerStatus('482892') + "|  " + minerGPUs('482892') + "/9 GPUs Running   |")
+		print("    |  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
+		print("    |  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
+		print("    |-------------------------------------------|")
+#		print("|      Reboot commands are A1, A2, etc.     |")
+#		print("|      'stats' to update miner status       |")
+#		print("|      'All' to reboot all, Q to quit       |")
+#		print("---------------------------------------------")
 		while i > 0:
-			os.system('clear')
-			print("---------------------------------------------")
-			print("|-----------  RIG PANEL v0.1.4  ------------|")
-			print("|---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
-			print("|                                           |")
-			print("|  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
-			print("|  A2 Status: " + minerStatus('50270d') + "|  " + minerGPUs('50270d') + "/7 GPUs Running   |")
-			print("|  A3 Status: " + minerStatus('482892') + "|  " + minerGPUs('482892') + "/9 GPUs Running   |")
-			print("|  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
-			print("|  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
-			print("|                                           |")
-			print("|      Reboot commands are A1, A2, etc.     |")
-			print("|      'stats' to update miner status       |")
-			print("|      'All' to reboot all, Q to quit       |")
-			print("---------------------------------------------")
-			print("|   Input: ctrl + C   |   Refresh: " + str(datetime.timedelta(seconds=i)) + "  |")
-			print("---------------------------------------------")
+			print("    |   Input: ctrl + c   |   Refresh: " + str(datetime.timedelta(seconds=i)) + "  | \r")
+			print("    ---------------------------------------------")
 			print("")
+			delete_last_lines(3)
 			time.sleep(1)
 			i -= 1
+		i = 60
 
 	except KeyboardInterrupt:
 		i = 60
+		print("  | Reboot single Rig: a1, a2, etc.           |")
+		print("    | Reboot all rigs  : all                    |")
+		print("    | ENTER (no command) for manual update      |")
+		print("    | Q to quit back to terminal                |")
+		print("    ---------------------------------------------")
 		riggo = raw_input("====>  Panel Command: ")
 		rig = riggo.upper()
 	
