@@ -120,6 +120,11 @@ while True:
 		print_slow("You didn't say the magic word!")
 		time.sleep(3)
 
+	elif rig == '':
+		print('')
+		print('     Updating')
+		print_slow('.....')
+		
 	else:
 		print("")
 		print("    " + riggo + "ed your mom last night")
