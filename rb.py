@@ -86,7 +86,7 @@ while True:
 	
 	while i > 0:
 #		rigga = raw_input('====>  Press Enter to Input Command  <=====')
-		sleep(1)
+		time.sleep(1)
 		i -= 1
 
 #	if rigga == '':
