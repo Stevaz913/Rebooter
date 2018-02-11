@@ -8,13 +8,22 @@ import textwrap
 import string
 import random
 import datetime
-
-rig = ''
-riggo = ''
-rigga = ''
+from slackclient import SlackClient
 
 CURSOR_UP_ONE = '\x1b[1A'
 ERASE_LINE = '\x1b[2K'
+
+slack_token = ''
+sc = SlackClient(slack_token)
+
+def slackmessage(m):
+    sc.api_call(
+      "chat.postMessage",
+      channel="#rigstatus",
+      text=m,
+      as_user="False",
+      username=user,
+    )
 
 def delete_last_lines(n=1):
     for _ in range(n):
@@ -67,7 +76,34 @@ def hashrateMod(hashrate):
 	elif hr >= 0:
 		x = str(hr) + "  ---"
 	return x 
+
 i = 60
+rig = ''
+riggo = ''
+rigga = ''
+
+while True:
+	os.system('clear')
+	print("    ---------------------------------------------")
+	print("    |-----------  RIG PANEL v0.1.5  ------------|")
+	print("    |-------------------------------------------|")
+	print("")
+	print("    Enter User Number:")
+	print("    [1] Freak")
+	print("    [2] Weeze")
+	print("")
+	uin = raw_input("====> ")
+
+	if uin == '1':
+		user = 'Freak'
+		break
+	elif uin == '2':
+		user = 'Weeze'
+		break
+	else:
+		print('    Enter 1 or 2')
+		time.sleep(2)
+
 while True:
 	try:
 		os.system('clear')
@@ -77,6 +113,7 @@ while True:
 		print("    ---------------------------------------------")
 		print("    |-----------  RIG PANEL v0.1.5  ------------|")
 		print("    |---------------  HR: " + str(hashrateMod(hashrate)) + "----------------|")
+		print("    |            Logged in as " + user + "             |")
 		print("    |                                           |")
 		print("    |  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
 		print("    |  A2 Status: " + minerStatus('50270d') + "|  " + minerGPUs('50270d') + "/7 GPUs Running   |")
@@ -103,6 +140,9 @@ while True:
 		rig = riggo.upper()
 	
 		if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
+			s = raw_input('Send message to slack channel? (y/n) ')
+			if s == 'y':
+				slackmessage("Rebooting " + rig)
 			rebooter.rebme(rig)
 	
 		elif rig == 'Q':
@@ -110,9 +150,14 @@ while True:
 			sys.exit(0)
 	
 		elif rig == 'ALL':
+			s = raw_input('Send message to slack channel? (y/n) ')
+			if s == 'y':
+				slackmessage("Rebooting ALL")
 			rball.rbooter()
 	
 		elif rig == 'DADJOKE':
+			if s == 'y':
+				slackmessage("SUCCESS")
 			response = requests.get("https://icanhazdadjoke.com/",
   		  		headers={
     	    		"Accept": "application/json"
