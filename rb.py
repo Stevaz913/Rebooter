@@ -85,11 +85,13 @@ while True:
 	print("")
 	
 	while i > 0:
-		rigga = raw_input('====>  Press Enter to Input Command  <=====')
+#		rigga = raw_input('====>  Press Enter to Input Command  <=====')
+		sleep(1)
+		i -= 1
 
-	if rigga == '':
-		riggo = raw_input("====>  Panel Command: ")
-		rig = riggo.upper()
+#	if rigga == '':
+	riggo = raw_input("====>  Panel Command: ")
+	rig = riggo.upper()
 	
 	if rig == 'A1' or rig == 'A2' or rig == 'A3' or rig == 'B1' or rig == 'B2':
 		rebooter.rebme(rig)
