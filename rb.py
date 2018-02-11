@@ -20,6 +20,8 @@ def minerStatus(rig):
 		x = status.replace('unreachable', 'D/C     ')
 	elif status == 'overheat':
 		x = status.replace('overheat', 'HEAT    ')
+	elif status == 'no_hash':
+		x = status.replace('no_hash', 'NO HASH ')
 	else:
 		x = status
 	return x
