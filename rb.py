@@ -36,6 +36,12 @@ def print_slow(typeout):
         sys.stdout.flush()
         time.sleep(0.045)
 
+def print_slower(typeout):
+    for letter in typeout:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.15)
+
 def hashrateMod(hashrate):
 	hr = hashrate
 	#hr = int((data['per_info']['claymore']['hash']))
@@ -124,7 +130,7 @@ while True:
 		print('')
 		sys.stdout.write('     Updating')
 		sys.stdout.flush()
-		print_slow('.....')
+		print_slower('.....')
 
 	else:
 		print("")
