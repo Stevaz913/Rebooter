@@ -182,7 +182,7 @@ while True:
 			print_slow("You didn't say the magic word!")
 			time.sleep(3)
 
-		elif rig == 's':
+		elif rig == 'S':
 			s = raw_input('====> Message: ')
 			slackmessage(s)
 
