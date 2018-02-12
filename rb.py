@@ -19,7 +19,7 @@ sc = SlackClient(slack_token)
 def slackmessage(m):
     sc.api_call(
       "chat.postMessage",
-      channel="#testchannel",
+      channel="#rigstatus",
       text=m,
       as_user="False",
       username=user,
@@ -77,10 +77,6 @@ def hashrateMod(hashrate):
 		x = str(hr) + "  ---"
 	return x 
 
-i = 60
-rig = ''
-riggo = ''
-
 while True:
 	os.system('clear')
 	print("    ---------------------------------------------")
@@ -103,6 +99,14 @@ while True:
 		print('    Enter 1 or 2')
 		time.sleep(2)
 
+idlecount = 0
+nidle = 10
+idle = 600
+rig = ''
+riggo = ''
+rtime = nidle
+status = '(active)'
+
 while True:
 	try:
 		os.system('clear')
@@ -112,7 +116,7 @@ while True:
 		print("    ---------------------------------------------")
 		print("   |------------  RIG PANEL v0.1.8  -------------|")
 		print("    ----------------  HR: " + str(hashrateMod(hashrate)) + "-----------------")
-		print("    |            Logged in as " + user + "             |")
+		print("    |        Logged in as " + user + " " + status + "        |")
 		print("    |                                           |")
 		print("    |  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
 		print("    |  A2 Status: " + minerStatus('50270d') + "|  " + minerGPUs('50270d') + "/7 GPUs Running   |")
@@ -120,16 +124,16 @@ while True:
 		print("    |  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
 		print("    |  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
 		print("    ---------------------------------------------")
-		while i > 0:
-			print("    |   Input: ctrl + c   |   Refresh: " + str(datetime.timedelta(seconds=i)) + "  | \r")
+		while rtime >= 0:
+			print("    |   Input: ctrl + c   |   Refresh: " + str(datetime.timedelta(seconds=rtime)) + "  |")
 			print("    ---------------------------------------------")
 			delete_last_lines(2)
 			time.sleep(1)
-			i -= 1
-		i = 60
+			rtime -= 1
 
 	except KeyboardInterrupt:
-		i = 60
+		idlecount = 0
+		status = "(active)"
 		print("  | [a1]... : Reboot Single Rig               |")
 		print("    | [all]   : Reboot all rigs                 |")
 		print("    | [s]     : Send slack message              |")
@@ -198,4 +202,8 @@ while True:
 			print("    " + riggo + "ed your mom last night")
 			time.sleep(3)
 
-	i = 60
+	idlecount += 1
+	rtime = nidle
+	if idlecount >= 30:
+		status = "(idle)  "
+		rtime = idle
