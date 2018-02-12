@@ -46,6 +46,8 @@ def minerStatus(rig):
 		x = status.replace('overheat', 'HEAT    ')
 	elif status == 'no_hash':
 		x = status.replace('no_hash', 'NO HASH ')
+	elif status == 'autorebooted':
+		x = status.replace('autorebooted', 'A/BOOT  ')
 	else:
 		x = status
 	return x
