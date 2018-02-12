@@ -1,3 +1,5 @@
+ver = 'v0.1.9'
+
 import rebooter
 import rball
 import os
@@ -80,7 +82,7 @@ def hashrateMod(hashrate):
 while True:
 	os.system('clear')
 	print("    ---------------------------------------------")
-	print("   |-----------  RIG PANEL v0.1.8  --------------|")
+	print("   |-----------  RIG PANEL " + ver + "  --------------|")
 	print("    ---------------------------------------------")
 	print("")
 	print("    Enter User Number:")
@@ -114,7 +116,7 @@ while True:
 		data = json.loads(ret.read())
 		hashrate = int((data['per_info']['claymore']['hash']))
 		print("    ---------------------------------------------")
-		print("   |------------  RIG PANEL v0.1.8  -------------|")
+		print("   |------------  RIG PANEL " + ver + "  -------------|")
 		print("    ----------------  HR: " + str(hashrateMod(hashrate)) + "-----------------")
 		print("    |        Logged in as " + user + " " + status + "        |")
 		print("    |                                           |")
