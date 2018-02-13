@@ -1,4 +1,4 @@
-ver = 'v0.2.1'
+ver = 'v0.2.2'
 
 import rebooter
 import rball
@@ -35,19 +35,19 @@ def delete_last_lines(n=1):
 def minerStatus(rig):
 	status = str(data['rigs'][rig]['condition'])
 	if status == 'mining':
-		x = status.replace('mining', 'OK      ')
+		x = status.replace('mining', 'RUNNING      ')
 	elif status == 'stuck_miners':
-		x = status.replace('stuck_miners', 'STUCK   ')
+		x = status.replace('stuck_miners', 'CARD CRASH   ')
 	elif status =='just_booted':
-		x = status.replace('just_booted', 'BOOT(' + str(data['rigs'][rig]['gpus']) + ') ')
+		x = status.replace('just_booted', 'BOOTUP (' + str(data['rigs'][rig]['gpus']) + ')   ')
 	elif status == 'unreachable':
-		x = status.replace('unreachable', 'D/C     ')
+		x = status.replace('unreachable', 'RIG DOWN     ')
 	elif status == 'overheat':
-		x = status.replace('overheat', 'HEAT    ')
+		x = status.replace('overheat', 'OVER-HEAT    ')
 	elif status == 'no_hash':
-		x = status.replace('no_hash', 'NO HASH ')
+		x = status.replace('no_hash', 'NOT HASHING  ')
 	elif status == 'autorebooted':
-		x = status.replace('autorebooted', 'A/BOOT  ')
+		x = status.replace('autorebooted', 'AUTO BOOTED  ')
 	else:
 		x = status
 	return x
@@ -72,9 +72,14 @@ def print_slower(typeout):
         sys.stdout.flush()
         time.sleep(0.15)
 
+def slicer(rig, start, end):
+	hashData = data['rigs'][rig]['miner_hashes']
+	hashSlice = (hashData[start:end])
+	return hashSlice
+
 def hashrateMod(hashrate):
 	hr = hashrate
-	#hr = int((data['per_info']['claymore']['hash']))
+	# hr = int((data['per_info']['claymore']['hash']))
 	if hr > 1000:
 		x = str(hr) + "  "
 	elif hr > 100:
@@ -115,32 +120,43 @@ riggo = ''
 rtime = nidle
 status = '(active)'
 
+
+if user == 'Freak':
+	iduser = 'Weeze'
+else:
+	iduser = 'Freak'
+
 while True:
 	try:
 		os.system('clear')
 		ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 		data = json.loads(ret.read())
 		hashrate = int((data['per_info']['claymore']['hash']))
-		print("    ---------------------------------------------")
-		print("   |------------  RIG PANEL " + ver + "  -------------|")
-		print("    ----------------  HR: " + str(hashrateMod(hashrate)) + "-----------------")
-		print("    |        Logged in as " + user + " " + status + "        |")
-		print("    |                                           |")
-		print("    |  A1 Status: " + minerStatus('5026ef') + "|  " + minerGPUs('5026ef') + "/7 GPUs Running   |")
-		print("    |  A2 Status: " + minerStatus('50270d') + "|  " + minerGPUs('50270d') + "/7 GPUs Running   |")
-		print("    |  A3 Status: " + minerStatus('482892') + "|  " + minerGPUs('482892') + "/9 GPUs Running   |")
-		print("    |  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
-		print("    |  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
-		print("    ---------------------------------------------")
-		print("    | A1 Hash: " + data['rigs']['5026ef']['miner_hashes'])
-		print("    | A2 Hash: " + data['rigs']['50270d']['miner_hashes'])
-		print("    | A3 Hash: " + data['rigs']['482892']['miner_hashes'])
-		print("    | B1 Hash: " + data['rigs']['502b8a']['miner_hashes'])
-		print("    | B2 Hash: " + data['rigs']['590b29']['miner_hashes'])
-		print("    |-------------------------------------------|")
+		print("    ---------------------------------------------------")
+		print("   |---------------  RIG PANEL " + ver + "  ----------------|")
+		print("    -------------------  HR: " + str(hashrateMod(hashrate)) + "--------------------")
+		print("    |            Logged in as " + user + " " + status + "          |")
+		print("    |                                                 |")
+		print("    |  A1: " + minerStatus('5026ef') + "| " + minerGPUs('5026ef') + "/7 GPU |                   |")
+		print("    |  A2: " + minerStatus('50270d') + "| " + minerGPUs('50270d') + "/7 GPU |                   |")
+		print("    |  A3: " + minerStatus('482892') + "| " + minerGPUs('482892') + "/9 GPU |                   |")
+		print("    |  B1: " + minerStatus('502b8a') + "| " + minerGPUs('502b8a') + "/9 GPU |                   |")
+		print("    |  B2: " + minerStatus('590b29') + "| " + minerGPUs('590b29') + "/8 GPU |                   |")
+		print("    ---------------------------------------------------")
+		print("    | A1 Hash | A2 Hash | A3 Hash | B1 Hash | B2 Hash |                                             |")
+		print("    |  " + slicer('5026ef', 0, 5)  + "     "  + slicer('50270d', 0, 5) + "     " + slicer('482892', 0, 5) + "     " + slicer('502b8a', 0, 5) + "     " + slicer('590b29', 0, 5) + "  |")
+		print("    |  " + slicer('5026ef', 6, 11)  + "     "  + slicer('50270d', 6, 11) + "     " + slicer('482892', 6, 11) + "     " + slicer('502b8a', 6, 11) + "     " + slicer('590b29', 6, 11) + "  |")
+		print("    |  " + slicer('5026ef', 12, 17)  + "     "  + slicer('50270d', 12, 17) + "     " + slicer('482892', 12, 17) + "     " + slicer('502b8a', 12, 17) + "     " + slicer('590b29', 12, 17) + "  |")
+		print("    |  " + slicer('5026ef', 18, 23)  + "     "  + slicer('50270d', 18, 23) + "     " + slicer('482892', 18, 23) + "     " + slicer('502b8a', 18, 23) + "     " + slicer('590b29', 18, 23) + "  |")
+		print("    |  " + slicer('5026ef', 24, 29)  + "     "  + slicer('50270d', 24, 29) + "     " + slicer('482892', 24, 29) + "     " + slicer('502b8a', 24, 29) + "     " + slicer('590b29', 24, 29) + "  |")
+		print("    |  " + slicer('5026ef', 30, 35)  + "     "  + slicer('50270d', 30, 35) + "     " + slicer('482892', 30, 35) + "     " + slicer('502b8a', 30, 35) + "     " + slicer('590b29', 30, 35) + "  |")
+		print("    |  " + slicer('5026ef', 36, 41)  + "     "  + slicer('50270d', 36, 41) + "     " + slicer('482892', 36, 41) + "     " + slicer('502b8a', 36, 41) + "     " + slicer('590b29', 36, 41) + "  |")
+		print("    |                      " + slicer('482892', 42, 47) + "     " + slicer('502b8a', 42, 47) + "     " + slicer('590b29', 42, 47) + "  |")
+		print("    |                      " + slicer('482892', 48, 53) + "     " + slicer('502b8a', 48, 53) + "            |")
+		print("    ---------------------------------------------------")				
 		while rtime >= 0:
-			print("    |   Input: ctrl + c   |   Refresh: " + str(datetime.timedelta(seconds=rtime)) + "  |")
-			print("    ---------------------------------------------")
+			print("    |  Input: ctrl + c  | " + str(datetime.timedelta(seconds=rtime)) + " |  " + iduser + ": U/C LMAO  |")
+			print("    ---------------------------------------------------")
 			delete_last_lines(2)
 			time.sleep(1)
 			rtime -= 1
@@ -148,12 +164,12 @@ while True:
 	except KeyboardInterrupt:
 		idlecount = 0
 		status = "(active)"
-		print("  | [a1]... : Reboot Single Rig               |")
-		print("    | [all]   : Reboot all rigs                 |")
-		print("    | [s]     : Send slack message              |")
-		print("    | [q]     : Quit back to terminal           |")
-		print("    | ENTER (no command) for manual update      |")
-		print("    ---------------------------------------------")
+		print("    \| [a1]... : Reboot Single Rig               |/")
+		print("       | [all]   : Reboot all rigs                 |")
+		print("       | [s]     : Send slack message              |")
+		print("       | [q]     : Quit back to terminal           |")
+		print("       | ENTER (no command) for manual update      |")
+		print("       ---------------------------------------------")
 		riggo = raw_input("====>  Panel Command: ")
 		rig = riggo.upper()
 	
