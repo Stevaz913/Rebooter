@@ -143,7 +143,7 @@ while True:
 		print("    |  B1: " + minerStatus('502b8a') + "| " + minerGPUs('502b8a') + "/9 GPU |                   |")
 		print("    |  B2: " + minerStatus('590b29') + "| " + minerGPUs('590b29') + "/8 GPU |                   |")
 		print("    ---------------------------------------------------")
-		print("    | A1 Hash | A2 Hash | A3 Hash | B1 Hash | B2 Hash |                                             |")
+		print("    | A1 Hash | A2 Hash | A3 Hash | B1 Hash | B2 Hash |")
 		print("    |  " + slicer('5026ef', 0, 5)  + "     "  + slicer('50270d', 0, 5) + "     " + slicer('482892', 0, 5) + "     " + slicer('502b8a', 0, 5) + "     " + slicer('590b29', 0, 5) + "  |")
 		print("    |  " + slicer('5026ef', 6, 11)  + "     "  + slicer('50270d', 6, 11) + "     " + slicer('482892', 6, 11) + "     " + slicer('502b8a', 6, 11) + "     " + slicer('590b29', 6, 11) + "  |")
 		print("    |  " + slicer('5026ef', 12, 17)  + "     "  + slicer('50270d', 12, 17) + "     " + slicer('482892', 12, 17) + "     " + slicer('502b8a', 12, 17) + "     " + slicer('590b29', 12, 17) + "  |")
