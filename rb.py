@@ -1,4 +1,4 @@
-ver = 'v0.1.9'
+ver = 'v0.2.0'
 
 import rebooter
 import rball
@@ -39,7 +39,7 @@ def minerStatus(rig):
 	elif status == 'stuck_miners':
 		x = status.replace('stuck_miners', 'STUCK   ')
 	elif status =='just_booted':
-		x = status.replace('just_booted', 'BOOT (' + str(data['rigs'][rig]['gpus']) + ') ')
+		x = status.replace('just_booted', 'BOOT(' + str(data['rigs'][rig]['gpus']) + ') ')
 	elif status == 'unreachable':
 		x = status.replace('unreachable', 'D/C     ')
 	elif status == 'overheat':
@@ -209,6 +209,9 @@ while True:
 			print("")
 			print("    " + riggo + "ed your mom last night")
 			time.sleep(3)
+
+	except Exception as e:
+		print e
 
 	idlecount += 1
 	rtime = nidle
