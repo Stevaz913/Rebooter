@@ -1,4 +1,4 @@
-ver = 'v0.2.3'
+ver = 'v1.0.0'
 
 import rebooter
 import rball
@@ -17,6 +17,8 @@ ERASE_LINE = '\x1b[2K'
 
 slack_token = ''
 sc = SlackClient(slack_token)
+
+togStr = 'Hash'
 
 def slackmessage(m):
     sc.api_call(
@@ -73,7 +75,10 @@ def print_slower(typeout):
         time.sleep(0.15)
 
 def slicer(rig, start, end):
-	hashData = data['rigs'][rig]['miner_hashes']
+	if togStr == 'Hash':
+		hashData = data['rigs'][rig]['miner_hashes']
+	else:
+		hashData = data['rigs'][rig]['temp']
 	hashSlice = (hashData[start:end])
 	return hashSlice
 
@@ -115,6 +120,10 @@ def getNano():
 	data = json.loads(html)
 	roundVal = '%.9f' % data['data']
 	return roundVal
+
+def thtog(rig):
+	Money = 1000
+	#TO DO
 
 while True:
 	os.system('clear')
@@ -170,7 +179,7 @@ while True:
 		print("    |  B1: " + minerStatus('502b8a') + "| " + minerGPUs('502b8a') + "/9 GPU | " + upTime('502b8a') + " |")
 		print("    |  B2: " + minerStatus('590b29') + "| " + minerGPUs('590b29') + "/8 GPU | " + upTime('590b29') + " |")
 		print("    ---------------------------------------------------")
-		print("    | A1 Hash | A2 Hash | A3 Hash | B1 Hash | B2 Hash |")
+		print("    | A1 " + togStr + " | A2 " + togStr + " | A3 " + togStr + " | B1 " + togStr + " | B2 " + togStr + " |")
 		print("    |  " + slicer('5026ef', 0, 5)  + "     "  + slicer('50270d', 0, 5) + "     " + slicer('482892', 0, 5) + "     " + slicer('502b8a', 0, 5) + "     " + slicer('590b29', 0, 5) + "  |")
 		print("    |  " + slicer('5026ef', 6, 11)  + "     "  + slicer('50270d', 6, 11) + "     " + slicer('482892', 6, 11) + "     " + slicer('502b8a', 6, 11) + "     " + slicer('590b29', 6, 11) + "  |")
 		print("    |  " + slicer('5026ef', 12, 17)  + "     "  + slicer('50270d', 12, 17) + "     " + slicer('482892', 12, 17) + "     " + slicer('502b8a', 12, 17) + "     " + slicer('590b29', 12, 17) + "  |")
@@ -195,9 +204,10 @@ while True:
 		status = "(active)"
 		print("    \| [a1]... : Reboot Single Rig               |/")
 		print("       | [all]   : Reboot all rigs                 |")
+		print("       | [t]     : Toggle Hash/Temp in panel       |")
 		print("       | [s]     : Send slack message              |")
-		print("       | [q]     : Quit back to terminal           |")
 		print("       | [n]     : Update Nanopool Balance         |")
+		print("       | [q]     : Quit back to terminal           |")
 		print("       | ENTER (no command) for manual update      |")
 		print("       ---------------------------------------------")
 		riggo = raw_input("====>  Panel Command: ")
@@ -216,6 +226,12 @@ while True:
 		elif rig == 'Q':
 			print('Exiting...')
 			sys.exit(0)
+
+		elif rig == "T":
+			if togStr == 'Hash':
+				togStr = 'Temp'
+			else:
+				togStr = 'Hash'
 
 		elif rig == 'N':
 			nanBal = getNano()
