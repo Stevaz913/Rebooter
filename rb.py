@@ -107,6 +107,15 @@ def upTime(rig):
 		x = utime
 	return x
 
+def getNano():
+	account = 'https://api.nanopool.org/v1/eth/balance/0x865f80e37dc3360aacc76d0064c5c1b61639e9c5'
+	hdr = { 'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36' }
+	req = urllib2.Request(account, None, hdr)
+	html = urllib2.urlopen(req).read()
+	data = json.loads(html)
+	roundVal = '%.9f' % data['data']
+	return roundVal
+
 while True:
 	os.system('clear')
 	print("    ---------------------------------------------")
@@ -143,6 +152,7 @@ if user == 'Freak':
 else:
 	iduser = 'Freak'
 
+nanBal = getNano()
 while True:
 	try:
 		os.system('clear')
@@ -170,7 +180,9 @@ while True:
 		print("    |  " + slicer('5026ef', 36, 41)  + "     "  + slicer('50270d', 36, 41) + "     " + slicer('482892', 36, 41) + "     " + slicer('502b8a', 36, 41) + "     " + slicer('590b29', 36, 41) + "  |")
 		print("    |                      " + slicer('482892', 42, 47) + "     " + slicer('502b8a', 42, 47) + "     " + slicer('590b29', 42, 47) + "  |")
 		print("    |                      " + slicer('482892', 48, 53) + "     " + slicer('502b8a', 48, 53) + "            |")
-		print("    ---------------------------------------------------")				
+		print("    ---------------------------------------------------")
+		print("    | Nanopool Balance: " + nanBal + "  Ethereums        |")	
+		print("    ---------------------------------------------------")			
 		while rtime >= 0:
 			print("    |  Input: ctrl + c  | " + str(datetime.timedelta(seconds=rtime)) + " |  " + iduser + ": U/C LMAO  |")
 			print("    ---------------------------------------------------")
@@ -185,6 +197,7 @@ while True:
 		print("       | [all]   : Reboot all rigs                 |")
 		print("       | [s]     : Send slack message              |")
 		print("       | [q]     : Quit back to terminal           |")
+		print("       | [n]     : Update Nanopool Balance         |")
 		print("       | ENTER (no command) for manual update      |")
 		print("       ---------------------------------------------")
 		riggo = raw_input("====>  Panel Command: ")
@@ -203,6 +216,9 @@ while True:
 		elif rig == 'Q':
 			print('Exiting...')
 			sys.exit(0)
+
+		elif rig == 'N':
+			nanBal = getNano()
 	
 		elif rig == 'ALL':
 			s = raw_input('Send message to slack channel? (y/n) ')
@@ -242,7 +258,6 @@ while True:
 			sys.stdout.write('     Updating')
 			sys.stdout.flush()
 			print_slower('.....')
-			time.sleep(2)
 
 		else:
 			print("")
@@ -251,6 +266,7 @@ while True:
 
 	except Exception as e:
 		print e
+		time.sleep(2)
 
 	idlecount += 1
 	rtime = nidle
