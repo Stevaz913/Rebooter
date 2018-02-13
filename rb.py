@@ -39,7 +39,7 @@ def minerStatus(rig):
 	elif status == 'stuck_miners':
 		x = status.replace('stuck_miners', 'STUCK   ')
 	elif status =='just_booted':
-		x = status.replace('just_booted', 'BOOTUP  ')
+		x = status.replace('just_booted', 'BOOT (' + str(data['rigs'][rig]['gpus']) + ') ')
 	elif status == 'unreachable':
 		x = status.replace('unreachable', 'D/C     ')
 	elif status == 'overheat':
@@ -55,6 +55,10 @@ def minerStatus(rig):
 def minerGPUs(rig):
 	status = str(data['rigs'][rig]['miner_instance'])
 	return status
+
+def perRigGpu(rig):
+	g = str(data['rigs'][rig]['gpus'])
+	return g
 
 def print_slow(typeout):
     for letter in typeout:
