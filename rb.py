@@ -1,4 +1,4 @@
-ver = 'v0.2.2'
+ver = 'v0.2.3'
 
 import rebooter
 import rball
@@ -88,7 +88,24 @@ def hashrateMod(hashrate):
 		x = str(hr) + "  --"
 	elif hr >= 0:
 		x = str(hr) + "  ---"
-	return x 
+	return x
+
+def upTime(rig):
+	up = int(data['rigs'][rig]['uptime'])
+	utime = str(datetime.timedelta(seconds=up))
+	if up < 36000:
+		x = "          " + utime
+	if up >= 36000:
+		x = "         " + utime
+	if up >= 86400:
+		x = "   " + utime
+	if up >= 172800:
+		x = "  " + utime
+	if up >= 864000:
+		x = " " + utime
+	if up >= 8640000:
+		x = utime
+	return x
 
 while True:
 	os.system('clear')
@@ -137,11 +154,11 @@ while True:
 		print("    -------------------  HR: " + str(hashrateMod(hashrate)) + "--------------------")
 		print("    |            Logged in as " + user + " " + status + "          |")
 		print("    |                                                 |")
-		print("    |  A1: " + minerStatus('5026ef') + "| " + minerGPUs('5026ef') + "/7 GPU |                   |")
-		print("    |  A2: " + minerStatus('50270d') + "| " + minerGPUs('50270d') + "/7 GPU |                   |")
-		print("    |  A3: " + minerStatus('482892') + "| " + minerGPUs('482892') + "/9 GPU |                   |")
-		print("    |  B1: " + minerStatus('502b8a') + "| " + minerGPUs('502b8a') + "/9 GPU |                   |")
-		print("    |  B2: " + minerStatus('590b29') + "| " + minerGPUs('590b29') + "/8 GPU |                   |")
+		print("    |  A1: " + minerStatus('5026ef') + "| " + minerGPUs('5026ef') + "/7 GPU | " + upTime('5026ef') + " |")
+		print("    |  A2: " + minerStatus('50270d') + "| " + minerGPUs('50270d') + "/7 GPU | " + upTime('50270d') + " |")
+		print("    |  A3: " + minerStatus('482892') + "| " + minerGPUs('482892') + "/9 GPU | " + upTime('482892') + " |")
+		print("    |  B1: " + minerStatus('502b8a') + "| " + minerGPUs('502b8a') + "/9 GPU | " + upTime('502b8a') + " |")
+		print("    |  B2: " + minerStatus('590b29') + "| " + minerGPUs('590b29') + "/8 GPU | " + upTime('590b29') + " |")
 		print("    ---------------------------------------------------")
 		print("    | A1 Hash | A2 Hash | A3 Hash | B1 Hash | B2 Hash |")
 		print("    |  " + slicer('5026ef', 0, 5)  + "     "  + slicer('50270d', 0, 5) + "     " + slicer('482892', 0, 5) + "     " + slicer('502b8a', 0, 5) + "     " + slicer('590b29', 0, 5) + "  |")
