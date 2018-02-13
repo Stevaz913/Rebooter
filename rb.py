@@ -1,4 +1,4 @@
-ver = 'v0.2.0'
+ver = 'v0.2.1'
 
 import rebooter
 import rball
@@ -132,6 +132,12 @@ while True:
 		print("    |  B1 Status: " + minerStatus('502b8a') + "|  " + minerGPUs('502b8a') + "/9 GPUs Running   |")
 		print("    |  B2 Status: " + minerStatus('590b29') + "|  " + minerGPUs('590b29') + "/8 GPUs Running   |")
 		print("    ---------------------------------------------")
+		print("    | A1 Hash: " + data['rigs']['5026ef']['miner_hashes'])
+		print("    | A2 Hash: " + data['rigs']['50270d']['miner_hashes'])
+		print("    | A3 Hash: " + data['rigs']['482892']['miner_hashes'])
+		print("    | B1 Hash: " + data['rigs']['502b8a']['miner_hashes'])
+		print("    | B2 Hash: " + data['rigs']['590b29']['miner_hashes'])
+		print("    |-------------------------------------------|")
 		while rtime >= 0:
 			print("    |   Input: ctrl + c   |   Refresh: " + str(datetime.timedelta(seconds=rtime)) + "  |")
 			print("    ---------------------------------------------")
