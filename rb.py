@@ -310,5 +310,5 @@ while True:
 	if idlecount >= 30:
 		status = "(idle)  "
 		rtime = idle
-	if idlecount >= 60:
+	if idlecount >= 360:
 		userStatUpdate(user, 'OFFLINE')
