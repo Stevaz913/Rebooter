@@ -1,5 +1,6 @@
-ver = 'v1.0.0'
+ver = 'v1.0.1'
 
+from ConfigParser import SafeConfigParser
 import rebooter
 import rball
 import os
@@ -12,6 +13,8 @@ import random
 import datetime
 from slackclient import SlackClient
 
+parser = SafeConfigParser()
+parser.read('rb.cfg')
 CURSOR_UP_ONE = '\x1b[1A'
 ERASE_LINE = '\x1b[2K'
 
@@ -121,10 +124,6 @@ def getNano():
 	roundVal = '%.9f' % data['data']
 	return roundVal
 
-def thtog(rig):
-	Money = 1000
-	#TO DO
-
 while True:
 	os.system('clear')
 	print("    ---------------------------------------------")
@@ -155,15 +154,34 @@ riggo = ''
 rtime = nidle
 status = '(active)'
 
-
-if user == 'Freak':
-	iduser = 'Weeze'
-else:
-	iduser = 'Freak'
+def userStatUpdate(userName, status):
+	if userName == 'Freak':
+		parser.set('fstatus', 'online', status)
+		with open('rb.cfg', 'wb') as configfile:
+			parser.write(configfile)
+	else:
+		parser.set('wstatus', 'online', status)
+		with open('rb.cfg', 'wb') as configfile:
+			parser.write(configfile)
 
 nanBal = getNano()
+
 while True:
 	try:
+		if user == 'Freak':
+			iduser = 'Weeze'
+			userStatus = parser.get('wstatus', 'online')
+		else:
+			iduser = 'Freak'
+			userStatus = parser.get('fstatus', 'online')
+
+		if status == '(active)':
+			userStatUpdate(user, '_ACTIVE')
+		elif status == '(idle)  ':
+			userStatUpdate(user, '___IDLE')
+		else:
+			userStatUpdate(user, 'OFFLINE')
+
 		os.system('clear')
 		ret = urllib2.urlopen(urllib2.Request('http://vega07.ethosdistro.com/?json=yes'))
 		data = json.loads(ret.read())
@@ -193,7 +211,7 @@ while True:
 		print("    | Nanopool Balance: " + nanBal + "  Ethereums        |")	
 		print("    ---------------------------------------------------")			
 		while rtime >= 0:
-			print("    |  Input: ctrl + c  | " + str(datetime.timedelta(seconds=rtime)) + " |  " + iduser + ": U/C LMAO  |")
+			print("    |  Input: ctrl + c  | " + str(datetime.timedelta(seconds=rtime)) + " |  " + iduser + ": " + userStatus + "   |")
 			print("    ---------------------------------------------------")
 			delete_last_lines(2)
 			time.sleep(1)
@@ -225,6 +243,7 @@ while True:
 	
 		elif rig == 'Q':
 			print('Exiting...')
+			userStatUpdate(user, "OFFLINE")
 			sys.exit(0)
 
 		elif rig == "T":
@@ -289,3 +308,5 @@ while True:
 	if idlecount >= 30:
 		status = "(idle)  "
 		rtime = idle
+	if idlecount >= 60:
+		userStatUpdate(user, 'OFFLINE')
