@@ -83,6 +83,8 @@ def slicer(rig, start, end):
 	else:
 		hashData = data['rigs'][rig]['temp']
 	hashSlice = (hashData[start:end])
+	if hashSlice == "":
+		hashSlice = "     "
 	return hashSlice
 
 def hashrateMod(hashrate):
@@ -205,8 +207,8 @@ while True:
 		print("    |  " + slicer('5026ef', 24, 29)  + "     "  + slicer('50270d', 24, 29) + "     " + slicer('482892', 24, 29) + "     " + slicer('502b8a', 24, 29) + "     " + slicer('590b29', 24, 29) + "  |")
 		print("    |  " + slicer('5026ef', 30, 35)  + "     "  + slicer('50270d', 30, 35) + "     " + slicer('482892', 30, 35) + "     " + slicer('502b8a', 30, 35) + "     " + slicer('590b29', 30, 35) + "  |")
 		print("    |  " + slicer('5026ef', 36, 41)  + "     "  + slicer('50270d', 36, 41) + "     " + slicer('482892', 36, 41) + "     " + slicer('502b8a', 36, 41) + "     " + slicer('590b29', 36, 41) + "  |")
-		print("    |                      " + slicer('482892', 42, 47) + "     " + slicer('502b8a', 42, 47) + "     " + slicer('590b29', 42, 47) + "  |")
-		print("    |                      " + slicer('482892', 48, 53) + "     " + slicer('502b8a', 48, 53) + "            |")
+		print("    |  " + slicer('5026ef', 42, 47)  + "     "  + slicer('482892', 42, 47) + "     " + slicer('502b8a', 42, 47) + "     " + slicer('502b8a', 42, 47) + "     " + slicer('590b29', 42, 47) + "  |")
+		print("    |  " + slicer('5026ef', 48, 53)  + "     "  + slicer('482892', 48, 53) + "     " + slicer('502b8a', 48, 53) + "     " + slicer('502b8a', 48, 53) + "     " + slicer('590b29', 48, 53) + "  |")
 		print("    ---------------------------------------------------")
 		print("    | Nanopool Balance: " + nanBal + "  Ethereums        |")	
 		print("    ---------------------------------------------------")			
