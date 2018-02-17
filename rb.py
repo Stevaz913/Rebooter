@@ -1,4 +1,4 @@
-ver = 'v1.0.1'
+ver = 'v1.0.2'
 
 from ConfigParser import SafeConfigParser
 import rebooter
@@ -196,7 +196,7 @@ while True:
 		print("    |            Logged in as " + user + " " + status + "          |")
 		print("    |                                                 |")
 		print("    |  A1: " + minerStatus('5026ef') + "| " + minerGPUs('5026ef') + "/7 GPU | " + upTime('5026ef') + " |")
-		print("    |  A2: " + minerStatus('50270d') + "| " + minerGPUs('50270d') + "/7 GPU | " + upTime('50270d') + " |")
+		print("    |  A2: " + minerStatus('50270d') + "| " + minerGPUs('50270d') + "/9 GPU | " + upTime('50270d') + " |")
 		print("    |  A3: " + minerStatus('482892') + "| " + minerGPUs('482892') + "/9 GPU | " + upTime('482892') + " |")
 		print("    |  B1: " + minerStatus('502b8a') + "| " + minerGPUs('502b8a') + "/9 GPU | " + upTime('502b8a') + " |")
 		print("    |  B2: " + minerStatus('590b29') + "| " + minerGPUs('590b29') + "/8 GPU | " + upTime('590b29') + " |")
