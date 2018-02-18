@@ -1,4 +1,4 @@
-ver = 'v1.0.2'
+ver = 'v1.0.3'
 
 from ConfigParser import SafeConfigParser
 import rebooter
@@ -120,13 +120,17 @@ def upTime(rig):
 	return x
 
 def getNano():
-	account = 'https://api.nanopool.org/v1/eth/balance/0x865f80e37dc3360aacc76d0064c5c1b61639e9c5'
-	hdr = { 'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36' }
-	req = urllib2.Request(account, None, hdr)
-	html = urllib2.urlopen(req).read()
-	data = json.loads(html)
-	roundVal = '%.9f' % data['data']
-	return roundVal
+	try:
+		account = 'https://api.nanopool.org/v1/eth/balance/0x865f80e37dc3360aacc76d0064c5c1b61639e9c5'
+		hdr = { 'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36' }
+		req = urllib2.Request(account, None, hdr)
+		html = urllib2.urlopen(req).read()
+		data = json.loads(html)
+		roundVal = '%.9f' % data['data']
+		return roundVal
+	except Exception as e:
+		print e
+		sleep.time(2)
 
 while True:
 	os.system('clear')
