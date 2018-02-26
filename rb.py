@@ -1,4 +1,4 @@
-ver = 'v1.0.3'
+ver = 'v1.0.4'
 
 from ConfigParser import SafeConfigParser
 import rebooter
@@ -55,6 +55,8 @@ def minerStatus(rig):
 		x = status.replace('no_hash', 'NOT HASHING  ')
 	elif status == 'autorebooted':
 		x = status.replace('autorebooted', 'AUTO BOOTED  ')
+	elif status == 'throttle':
+		x = status.replace('throttle', 'THROTTLE     ')
 	else:
 		x = status
 	return x
@@ -120,17 +122,17 @@ def upTime(rig):
 	return x
 
 def getNano():
-	try:
-		account = 'https://api.nanopool.org/v1/eth/balance/0x865f80e37dc3360aacc76d0064c5c1b61639e9c5'
-		hdr = { 'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36' }
-		req = urllib2.Request(account, None, hdr)
-		html = urllib2.urlopen(req).read()
-		data = json.loads(html)
-		roundVal = '%.9f' % data['data']
-		return roundVal
-	except Exception as e:
-		print e
-		sleep.time(2)
+#	try:
+	account = 'https://api.nanopool.org/v1/eth/balance/0x865f80e37dc3360aacc76d0064c5c1b61639e9c5'
+	hdr = { 'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36' }
+	req = urllib2.Request(account, None, hdr)
+	html = urllib2.urlopen(req).read()
+	data = json.loads(html)
+	roundVal = '%.9f' % data['data']
+	return roundVal
+#	except Exception as e:
+#		raw_input("   Fail to load Nanopool balance, enter to continue")
+#		nanBal = 0.0000000000
 
 while True:
 	os.system('clear')
@@ -275,9 +277,9 @@ while True:
 	
 		elif rig == 'DADJOKE':
 			response = requests.get("https://icanhazdadjoke.com/",
-  		  		headers={
-    	    		"Accept": "application/json"
-  		  		}
+	  			headers={
+   	    			"Accept": "application/json"
+	  			}
 			)
 			print textwrap.fill(response.json()['joke'], 40)
 			print('')
